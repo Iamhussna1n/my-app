@@ -29,14 +29,28 @@ export default function ContactPage() {
       } else {
         setError('Failed to send message. Please try again later.');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error sending message:', error);
       
       // Show specific error message from backend
-      if (error.response?.data?.error) {
-        setError(error.response.data.error);
-      } else if (error.response?.data?.details) {
-        setError(`Error: ${error.response.data.details}`);
+      if (
+        typeof error === 'object' && error !== null &&
+        'response' in error &&
+        typeof (error as { response?: unknown }).response === 'object' &&
+        (error as { response: { data?: unknown } }).response.data &&
+        typeof (error as { response: { data: { error?: unknown } } }).response.data === 'object' &&
+        (error as { response: { data: { error?: unknown } } }).response.data.error
+      ) {
+        setError((error as { response: { data: { error: string } } }).response.data.error);
+      } else if (
+        typeof error === 'object' && error !== null &&
+        'response' in error &&
+        typeof (error as { response?: unknown }).response === 'object' &&
+        (error as { response: { data?: unknown } }).response.data &&
+        typeof (error as { response: { data: { details?: unknown } } }).response.data === 'object' &&
+        (error as { response: { data: { details?: unknown } } }).response.data.details
+      ) {
+        setError(`Error: ${(error as { response: { data: { details: string } } }).response.data.details}`);
       } else {
         setError('An error occurred while sending your message. Please try again later.');
       }

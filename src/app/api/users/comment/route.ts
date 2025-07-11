@@ -32,7 +32,7 @@ export async function POST(request: Request) {
         const savedComment = await newComment.save();
         console.log("Comment saved successfully:", savedComment);
 
-        const emailResponse = sendEmail(
+        sendEmail(
             {
                 email : email,
                 comment : comment
@@ -43,14 +43,17 @@ export async function POST(request: Request) {
             message: "Comment added successfully",
             commentId: savedComment._id
         }, { status: 201 });
-    } catch (error : any) {
+    } catch (error : unknown) {
         console.error("Error adding comment:", error);
         
         // Check if it's a MongoDB validation error
-        if (error.name === 'ValidationError') {
+        if (
+            typeof error === 'object' && error !== null && 'name' in error &&
+            typeof (error as { name?: unknown }).name === 'string' && (error as { name: string }).name === 'ValidationError'
+        ) {
             return NextResponse.json({ 
                 error: "Validation error", 
-                details: error.message 
+                details: (error as { message?: string }).message 
             }, { status: 400 });
         }
         

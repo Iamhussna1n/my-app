@@ -45,7 +45,7 @@ export default function AchievementsPage() {
     <div className="min-h-screen px-6 py-16 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white">
       <h1 className="text-4xl font-bold text-center mb-4">My Achievements</h1>
       <p className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
-        Here's a glimpse into my academic excellence, competitive achievements, and extracurricular victories that reflect my skills, discipline, and dedication.
+        Here&apos;s a glimpse into my academic excellence, competitive achievements, and extracurricular victories that reflect my skills, discipline, and dedication.
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">

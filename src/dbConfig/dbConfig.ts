@@ -21,8 +21,12 @@ export async function connectToDatabase() {
             console.log("Connected to database successfully");
         });
         
-        connection.on('error', (error: any) => {
-            console.log("Error connecting to the database:", error);
+        connection.on('error', (error: unknown) => {
+            if (typeof error === 'object' && error !== null && 'message' in error && typeof (error as { message?: unknown }).message === 'string') {
+                console.log("Error connecting to the database:", (error as { message: string }).message);
+            } else {
+                console.log("Error connecting to the database:", error);
+            }
             isConnected = false;
         });
 

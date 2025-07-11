@@ -38,13 +38,13 @@ export default function Home() {
         </div>
         <div className="mt-8 max-w-2xl text-base text-gray-700 dark:text-gray-300 leading-relaxed">
           <p>
-            I'm a <strong>Software Engineering student</strong> at <strong>FAST NUCES Lahore</strong>,
-            passionate about building scalable web applications. I'm a proud <strong>Gold Medalist </strong>
-            and <strong>Dean's List</strong> candidate.
+            I&apos;m a <strong>Software Engineering student</strong> at <strong>FAST NUCES Lahore</strong>,
+            passionate about building scalable web applications. I&apos;m a proud <strong>Gold Medalist </strong>
+            and <strong>Dean&apos;s List</strong> candidate.
           </p>
           <p className="mt-4">
-            Besides academics, I'm a <strong>national-level chess player</strong> and have won multiple
-            university-level competitions. I’m also deeply involved in <strong>competitive programming</strong>,
+            Besides academics, I&apos;m a <strong>national-level chess player</strong> and have won multiple
+            university-level competitions. I&apos;m also deeply involved in <strong>competitive programming</strong>,
             having won the <strong>FAST Speed Programming Competition</strong> and solved over <strong>290 LeetCode problems</strong>.
           </p>
         </div>
