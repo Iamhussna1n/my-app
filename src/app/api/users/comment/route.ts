@@ -32,7 +32,7 @@ export async function POST(request: Request) {
         const savedComment = await newComment.save();
         console.log("Comment saved successfully:", savedComment);
 
-        sendEmail(
+        await sendEmail(
             {
                 email : email,
                 comment : comment

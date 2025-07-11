@@ -11,7 +11,7 @@ export async function sendEmail({email, comment}: { email: string; comment: stri
             }
         });
         const mailOptions = {
-            from: email,
+            from: process.env.EMAIL,
             to: 'husnainawan324@gmail.com',
             subject: 'Someone Saw Your Website',
             text: comment,
